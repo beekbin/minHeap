@@ -10,7 +10,7 @@ The elements of this MinHeap is int.
      
      
      
- #NOTICE
+ # NOTICE
   1. If other type of elements want to be processed, two things need to do:
       (1) declear the array of m_container of the desired type array;
       (2) change the compare statements in add(), buildUp(), and sinkDown();
