@@ -1,5 +1,10 @@
 
 /*The elements of this MinHeap is int. 
+  It uses an arry to store the binary tree structure. The index is from 1, not
+  from 0. Any element in the array index by i:
+     The parent of i-th element is: i/2;
+     The left child of the i-th element is: i*2;
+     The right child of the i-th element is: i*2+1;
   1. If other type of elements want to be processed, two things need to do:
       (1) declear the array of m_container of the desired type array;
       (2) change the compare statements in add(), buildUp(), and sinkDown();
@@ -18,9 +23,9 @@ public class MinHeap {
 		m_container = new int[m_capacity+1];
 	}
 
-	/*try to add a new element into the heap. 
-	  @Input: val, the new element;
-	  @Output: boolean, whether the new element is added into current heap.
+	/*Try to add a new element into the heap. 
+	  @param: val, the new element of type int;
+	  @return: boolean, whether the new element is added into current heap.
 	      false: if the number of elements is equal to the capacity, and
 	             if this new element is not bigger than the top of the heap,
 		     then, this element won't be able to add to current heap.
@@ -91,6 +96,12 @@ public class MinHeap {
 		return;
 	}
 
+    /* Retrieve and remove the top element in the heap.
+       The heap will be rebuilt after the removal.
+       @param null
+       @return the top element (the smallest) in the heap;
+               If the heap is empty, -1 will be returned.
+     */
 	public int poll() {
 		if(m_num < 1) {
 			return -1;
