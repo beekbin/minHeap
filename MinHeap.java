@@ -1,4 +1,12 @@
 
+/*The elements of this MinHeap is int. 
+  1. If other type of elements want to be processed, two things need to do:
+      (1) declear the array of m_container of the desired type array;
+      (2) change the compare statements in add(), buildUp(), and sinkDown();
+  2. This is a minHeap, which means that the top the elements is the smallest
+      in the collection. It can be used to find the Top-K values.
+  
+*/
 public class MinHeap {
 	protected int[] m_container;
 	protected int m_capacity;
@@ -10,10 +18,18 @@ public class MinHeap {
 		m_container = new int[m_capacity+1];
 	}
 
-	public int add(int val) {
+	/*try to add a new element into the heap. 
+	  @Input: val, the new element;
+	  @Output: boolean, whether the new element is added into current heap.
+	      false: if the number of elements is equal to the capacity, and
+	             if this new element is not bigger than the top of the heap,
+		     then, this element won't be able to add to current heap.
+	      true: the new element is added to the heap for now.
+	*/
+	public boolean add(int val) {
 		if(m_num == m_capacity) {
 			if(m_container[1] >= val) {
-				return -1;
+				return false;
 			}
 
 			m_container[1] = val;
@@ -24,7 +40,7 @@ public class MinHeap {
 			buildUp();
 		}
 
-		return 0;
+		return true;
 	}
 
 	public int size() {
